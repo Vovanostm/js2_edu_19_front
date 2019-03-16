@@ -5,7 +5,7 @@
       <v-img :src="item.img"></v-img>
 
       <v-card-title primary-title>
-        <div>
+        <div class="center">
           <h3 class="headline mb-0">{{ item.title }}</h3>
           <div>{{ item.text }}</div>
         </div>
@@ -16,33 +16,40 @@
         <v-btn flat color="orange">Explore</v-btn>
       </v-card-actions>
     </v-card>
+    <v-btn flat @click="addArticle">Добавить новость</v-btn>
   </div>
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
 export default {
   name: "News",
   data: () => ({
-    news: [
-      {
-        title: "Заголовок",
-        text:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, nobis molestiae deserunt autem ea eum enim nisi",
-        img: ""
-      },
-      {
-        title: "Заголовок",
-        text:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, nobis molestiae deserunt autem ea eum enim nisi",
-        img: ""
-      },
-      {
-        title: "Заголовок",
-        text:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, nobis molestiae deserunt autem ea eum enim nisi",
-        img: ""
-      }
-    ]
-  })
+    number: 2
+  }),
+  computed: {
+    // Подключение state из vuex и получение нужных ключей
+    ...mapState(["news"])
+  },
+  methods: {
+    // Подключение actions из vuex и получение нужных действий
+    ...mapActions(["addNews"]),
+
+    addArticle() {
+      let article = {
+        title: "Сделано с любовью",
+        text: "vuex прекрасен"
+      };
+      this.addNews(article); // вместо
+      // this.$store.dispatch("addNews", article)
+    }
+  }
 };
 </script>
+
+<style>
+.center {
+  text-align: center;
+  width: 100%;
+}
+</style>
