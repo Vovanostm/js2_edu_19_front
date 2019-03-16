@@ -18,7 +18,7 @@ export default {
         text: "Привет, Егор"
       },
       {
-        id: 0,
+        id: 1,
         from: 2,
         chat: 0,
         text: "Здравствуйте, ВА"
@@ -36,19 +36,15 @@ export default {
   },
 
   actions: {
-    addNews({ state, commit }, article) {
+    sendMessage({ state, commit }, message) {
       // Отправляем новость на сервер
       // Ждём ответа
       // Вызываем мутацию
-      let newNews = state.news.concat(); // Создание копии массива
-      // State можно изменять только в mutations!!!
-      newNews.push(article); // Добавляем новую новость в конец массива
-      commit("setNews", newNews); // Изменяем состояние
     }
   },
 
   mutations: {
-    setNews(state, news) {
+    setMessages(state, news) {
       state.news = news;
     }
   }
