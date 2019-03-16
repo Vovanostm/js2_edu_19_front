@@ -1,11 +1,11 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-
-Vue.use(Vuex);
-
-export default new Vuex.Store({
+export default {
   state: {
     news: [
+      {
+        title: "Хранилище",
+        text: "Ура, сложная задача",
+        img: ""
+      },
       {
         title: "Хранилище",
         text: "Ура, сложная задача",
@@ -13,11 +13,7 @@ export default new Vuex.Store({
       }
     ]
   },
-  mutations: {
-    setNews(state, news) {
-      state.news = news;
-    }
-  },
+
   actions: {
     addNews({ state, commit }, article) {
       // Отправляем новость на сервер
@@ -28,5 +24,11 @@ export default new Vuex.Store({
       newNews.push(article); // Добавляем новую новость в конец массива
       commit("setNews", newNews); // Изменяем состояние
     }
+  },
+
+  mutations: {
+    setNews(state, news) {
+      state.news = news;
+    }
   }
-});
+};

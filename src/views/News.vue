@@ -29,7 +29,9 @@ export default {
   }),
   computed: {
     // Подключение state из vuex и получение нужных ключей
-    ...mapState(["news"])
+    ...mapState({
+      news: state => state.news.news
+    })
   },
   methods: {
     // Подключение actions из vuex и получение нужных действий
