@@ -36,6 +36,7 @@ export default {
   },
 
   actions: {
+    getMessages({ state, commit }) {},
     sendMessage({ state, commit }, message) {
       // Отправляем новость на сервер
       // Ждём ответа

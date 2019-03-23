@@ -1,14 +1,13 @@
 <template>
-  <v-container>
-    <v-layout text-xs-center wrap>
-      <h1>Начинаем разработку</h1>
-    </v-layout>
-  </v-container>
+  <h1>
+    Начинаем разработку{{props.msg}}
+    <a href="/serve/goolge_auth"></a>
+  </h1>
 </template>
 
 <script>
 export default {
-  data: () => ({})
+  functional: true
 };
 </script>
 

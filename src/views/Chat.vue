@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapState, mapGetters, mapActions } from "vuex";
 export default {
   name: "Chat",
   data: () => ({
@@ -26,6 +26,9 @@ export default {
       chats: state => state.chat.chats
     }),
     ...mapGetters(["chatMessages"])
+  },
+  methods: {
+    ...mapActions(["sendMessage"])
   }
 };
 </script>

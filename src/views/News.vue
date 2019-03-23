@@ -1,6 +1,9 @@
 <template>
   <div>
-    <h2>Новости</h2>
+    <h2>
+      Новости
+      <button @click="getNews">Обновить</button>
+    </h2>
     <v-card v-for="(item, key) in news" :key="key" style="margin:20px">
       <v-img :src="item.img"></v-img>
 
@@ -35,7 +38,7 @@ export default {
   },
   methods: {
     // Подключение actions из vuex и получение нужных действий
-    ...mapActions(["addNews"]),
+    ...mapActions(["addNews", "getNews"]),
 
     addArticle() {
       let article = {
