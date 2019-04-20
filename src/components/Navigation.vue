@@ -32,7 +32,8 @@ export default {
       items: [
         { title: "Новости", icon: "dashboard", path: "/" },
         { title: "Чат", icon: "chat", path: "/chat" },
-        { title: "Магазин", icon: "shopping_cart", path: "/store" }
+        { title: "Магазин", icon: "shopping_cart", path: "/store" },
+        { title: "Логин", icon: "shopping_cart", path: "/login" }
       ],
       right: null
     };

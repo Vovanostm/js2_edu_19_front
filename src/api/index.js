@@ -14,7 +14,8 @@ export default {
     news: "/news",
     users: "/users",
     login: "/auth/login",
-    logout: "/auth/logout"
+    logout: "/auth/logout",
+    uploads: "/uploads"
   },
   axios: axios
 };

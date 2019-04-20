@@ -19,7 +19,12 @@
         <v-btn flat color="orange">Explore</v-btn>
       </v-card-actions>
     </v-card>
-    <v-btn flat @click="addArticle">Добавить новость</v-btn>
+    <form action="/uploads" @submit.prevent="addArticle">
+      <label>Название:<input v-model="title" type="text"></label>
+      <label>Текст:<input v-model="text" type="text"></label>
+      <input ref="inputFile" type="file">
+      <button type="submit">Добавить новость</button>
+    </form>
   </div>
 </template>
 
@@ -28,7 +33,10 @@ import { mapState, mapActions } from "vuex";
 export default {
   name: "News",
   data: () => ({
-    number: 2
+    number: 2,
+    preview: "",
+    title: "",
+    text: ""
   }),
   computed: {
     // Подключение state из vuex и получение нужных ключей
@@ -38,15 +46,20 @@ export default {
   },
   methods: {
     // Подключение actions из vuex и получение нужных действий
-    ...mapActions(["addNews", "getNews"]),
+    ...mapActions(["addNews", "getNews", "uploadImage"]),
 
     addArticle() {
-      let article = {
-        title: "Сделано с любовью",
-        text: "vuex прекрасен"
-      };
-      this.addNews(article); // вместо
-      // this.$store.dispatch("addNews", article)
+      let formData = new FormData();
+      formData.append("image", this.$refs.inputFile.files[0]);
+      this.uploadImage(formData).then(src => {
+        console.log(src)
+        let article = {
+          title: this.title,
+          text: this.text,
+          img: src
+        };
+        this.addNews(article);
+      });
     }
   }
 };

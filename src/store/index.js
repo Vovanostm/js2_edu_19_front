@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 import chat from './modules/chat';
+import files from './modules/files';
 import news from './modules/news';
 import users from './modules/users';
 
@@ -11,6 +12,7 @@ export default new Vuex.Store({
   modules: {
     news,
     chat,
-    users
+    users,
+    files
   }
 });
