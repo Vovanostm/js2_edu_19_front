@@ -15,7 +15,9 @@ export default {
     users: "/users",
     login: "/auth/login",
     logout: "/auth/logout",
-    uploads: "/uploads"
+    uploads: "/uploads",
+    chats: "/chats",
+    messages: "/chats/messages"
   },
   axios: axios
 };
