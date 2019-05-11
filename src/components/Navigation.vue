@@ -32,7 +32,8 @@ export default {
         { title: "Новости", icon: "dashboard", path: "/" },
         { title: "Чат", icon: "chat", path: "/chat" },
         { title: "Магазин", icon: "shopping_cart", path: "/store" },
-        { title: "Логин", icon: "shopping_cart", path: "/login" }
+        { title: "Логин", icon: "shopping_cart", path: "/login" },
+        { title: "Регистрация", icon: "shopping_cart", path: "/reg" }
       ],
       right: null
     };

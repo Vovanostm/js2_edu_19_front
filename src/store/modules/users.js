@@ -2,11 +2,15 @@ import api from '@/api';
 
 export default {
   state: {
+    username: "Anonymus",
     users: []
+  },
+  getters: {
+    username: () => {return localStorage.getItem('username')}
   },
   actions: {
     getUsers({commit}) {
-      api.axios.get(api.urls.users)
+      return api.axios.get(api.urls.users)
       .then(res => {
         commit("setUsers", res.data)
         return res.data
@@ -14,11 +18,13 @@ export default {
 
     },
     createUser({ state, commit }, user) {
-        api.axios.post(api.urls.users, user)
+        return api.axios.post(api.urls.users, user)
     },
     login({ state, commit }, user) {
-        api.axios.post(api.urls.login, user).then((res) => {
-            localStorage.setItem('jwt', res.data)
+        return api.axios.post(api.urls.login, user).then((res) => {
+            localStorage.setItem('jwt', res.data.token)
+            localStorage.setItem('username', res.data.username)
+            commit("setUsername", res.data.username)
         })
     }
   },
@@ -26,6 +32,9 @@ export default {
   mutations: {
     setUsers(state, users) {
       state.users = users
+    },
+    setUsername(state, username) {
+      state.username = username
     }
   }
 };

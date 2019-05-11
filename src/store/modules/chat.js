@@ -17,16 +17,21 @@ export default {
 
   actions: {
     getChats({commit}) {
-      api.axios.get(api.urls.chats)
+      return api.axios.get(api.urls.chats)
       .then(res => {
         commit("setChats", res.data)
         return res.data
       })
     },
-    getMessages({ state, commit }) {},
+    getMessages({ state, commit }) {
+      return api.axios.get(api.urls.messages)
+      .then(res => {
+        commit("setMessages", res.data)
+        return res.data
+      })
+    },
     sendMessage({ state, commit }, message) {
-      console.log("test")
-      api.axios.post(api.urls.messages, message)
+      return api.axios.post(api.urls.messages, message)
       .then(res => {
         let messages = state.messages.concat()
         messages.push(res.data)
